@@ -1,0 +1,49 @@
+#include "myString.cpp"
+#include "Months.cpp"
+#include<iostream>
+
+using namespace std;
+
+ostream & operator<<(ostream & O, Month a) {
+	O << a.monthNumber << " " << a.monthName;
+	return O;
+}
+
+istream &operator >> (istream &is, Month &a)  //cin operator overload
+{
+	int num;
+	char name[12];
+	is >> num;
+	is >> name;
+
+	a.SetMonthNumber(num);
+	a.SetMonthName(name);
+	return is;
+}
+
+
+int main()
+{
+	Month m1("February");
+	Month m2, m3, m4;
+	cout << m1.getMonthName() << endl;
+	cout << m1.getMonthNumber() << endl;
+	cout << endl;
+	cout << m1;
+	cout << endl;
+	m2 = ++m1;
+	cout << m1;
+	cout << m2;
+	cout << endl;
+	m3 = m1++;
+	cout << m1;
+	cout << m3;
+	cout << endl;
+	cout << "Enter the name of a month: ";
+	cin >> m4;
+	cout << m4;
+
+	system ("Pause");
+	return 0;
+}
+
