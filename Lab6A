@@ -4,27 +4,25 @@
 
 using namespace std;
 
-ostream & operator<<(ostream & O, Month a) {
-	O << a.monthNumber << " " << a.monthName;
-	return O;
+ostream & operator<<(ostream &str, const Month &obj) {
+	str << " Month Details: \nName: "
+		<< obj.monthName << "\nNumber: " << obj.monthNumber << endl;
+	return str;
 }
 
-istream &operator >> (istream &is, Month &a)  //cin operator overload
+istream &operator >> (istream &str, Month &obj)  //cin operator overload
 {
-	int num;
-	char name[12];
-	is >> num;
-	is >> name;
-
-	a.SetMonthNumber(num);
-	a.SetMonthName(name);
-	return is;
+	cout << "Enter month number: "; 
+	str >> obj.monthNumber;
+	cout << "Enter month name: "; 
+	str >> obj.monthName;
+	return str;
 }
 
 
-int main()
+void main()
 {
-	Month m1("February");
+	Month m1;
 	Month m2, m3, m4;
 	cout << m1.getMonthName() << endl;
 	cout << m1.getMonthNumber() << endl;
@@ -43,7 +41,6 @@ int main()
 	cin >> m4;
 	cout << m4;
 
-	system ("Pause");
-	return 0;
+	
 }
 
