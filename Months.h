@@ -1,10 +1,11 @@
-#pragma once
+
 #ifndef MONTH_H
 #define MONTH_H
 
 #include <iostream>
 #include <iomanip>
 #include <string>
+using namespace std;
 
 class Month
 {
@@ -19,44 +20,43 @@ public:
 		monthNumber = 1;
 	}
 
-	Month(string name)
+	Month(string nm)
 	{
-		setMonthName(name);
+		monthName = nm;
+		setMonthNumber(monthName);
 	}
 
-	Month(const int num)
+	Month(int num)
 	{
-		setMonthNumber(num);
+		if (monthNumber >= 1 && monthNumber <= 12)
+		{
+			monthNumber = num;
+		}
+		setMonthName(monthNumber);
 	}
 
-	const string getMonthName()
+	string getMonthName()
 	{
 		return monthName;
 	}
 
-	const int getMonthNumber() 
+	int getMonthNumber() 
 	{
 		return monthNumber;
 	}
 
-	void setMonthName(const string name)
-	{
-		monthName = name;
+	void setMonthName(int num);
 
-	}
-
-	void setMonthNumber(const int num)
-	{
-		monthNumber = num;
-	}
+	void setMonthNumber(string x);
+	
 
 	
 
 	Month operator++();
-	Month operator++(int);
+	//Month operator++(int);
 	Month operator--();
-	Month operator--(int);
-	friend ostream &operator <<(ostream &strm, const Month &obj);
-	friend istream &operator >> (istream &strm, Month &monthObj);
+	//Month operator--(int);
+	friend ostream &operator <<(ostream &, const Month &);
+	friend istream &operator >> (istream &, Month &);
 };
 #endif
